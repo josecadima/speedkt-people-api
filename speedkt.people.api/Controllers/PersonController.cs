@@ -20,10 +20,18 @@ namespace speedkt.people.api.Controllers
             this.personService = personService;
         }
 
-        [HttpGet(Name = "all")]
+        [HttpGet]
+        [Route("list")]
         public IEnumerable<Person> GetAll()
         {
             return personService.GetAll();
+        }
+
+        [HttpGet]
+        [Route("{personId:guid}")]
+        public Person Get(Guid personId)
+        {
+            return personService.GetById(personId);
         }
     }
 }

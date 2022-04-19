@@ -5,5 +5,6 @@ namespace speedkt.people.data.Service
     public interface IPersonService
     {
         public IList<Person> GetAll();
+        public Person GetById(Guid personId);
     }
 }

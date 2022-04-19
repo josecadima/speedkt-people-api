@@ -34,9 +34,14 @@ namespace speedkt.people.data.Repository
             throw new NotImplementedException();
         }
 
-        public Task<T> GetById(Guid id)
+        public Task<T> GetByIdAsync(Guid id)
         {
             throw new NotImplementedException();
+        }
+
+        public T GetById(Guid id)
+        {
+            return dbSet.Find(id);
         }
 
         public Task Update(T entity)

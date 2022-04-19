@@ -17,5 +17,10 @@ namespace speedkt.people.data.Service
         {
             return unitOfWork.Persons.All();
         }
+
+        public Person GetById(Guid personId)
+        {
+            return unitOfWork.Persons.GetById(personId);
+        }
     }
 }
