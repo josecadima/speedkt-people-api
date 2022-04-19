@@ -2,10 +2,10 @@
 
 namespace speedkt.people.data.Repository
 {
-    internal class GenericRepository<T> : IGenericRepository<T> where T : class
+    public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-        private PeopleDbContext dbContext;
-        private DbSet<T> dbSet;
+        protected PeopleDbContext dbContext;
+        protected DbSet<T> dbSet;
 
         public GenericRepository(PeopleDbContext dbContext)
         {
@@ -44,9 +44,9 @@ namespace speedkt.people.data.Repository
             return dbSet.Find(id);
         }
 
-        public Task Update(T entity)
+        public void Update(T entity)
         {
-            throw new NotImplementedException();
+            dbSet.Update(entity);
         }
     }
 }

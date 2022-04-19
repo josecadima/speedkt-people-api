@@ -9,7 +9,7 @@ namespace speedkt.people.data.Repository
         Task<IList<T>> AllAsync();
         Task<T> GetByIdAsync(Guid id);
         Task<T> Add(T entity);
-        Task Update(T entity);
+        void Update(T entity);
         Task Delete(T entity);
     }
 }

@@ -33,5 +33,19 @@ namespace speedkt.people.api.Controllers
         {
             return personService.GetById(personId);
         }
+
+        [HttpPut]
+        [Route("info")]
+        public void UpdateBasicInfo(Person personInfo)
+        {
+            personService.UpdateBasicInfo(personInfo);
+        }
+
+        [HttpPut]
+        [Route("avatar")]
+        public void UpdateAvatar(Person personInfo)
+        {
+            personService.UpdateAvatar(personInfo);
+        }
     }
 }

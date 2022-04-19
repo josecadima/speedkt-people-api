@@ -1,6 +1,5 @@
 ﻿using speedkt.people.data.Model;
 using speedkt.people.data.Repository;
-using System;
 
 namespace speedkt.people.data.Service
 {
@@ -21,6 +20,16 @@ namespace speedkt.people.data.Service
         public Person GetById(Guid personId)
         {
             return unitOfWork.Persons.GetById(personId);
+        }
+
+        public void UpdateBasicInfo(Person personInfo)
+        {
+            unitOfWork.Persons.UpdateBasicInfo(personInfo);
+        }
+
+        public void UpdateAvatar(Person personInfo)
+        {
+            unitOfWork.Persons.UpdateAvatar(personInfo);
         }
     }
 }

@@ -6,5 +6,7 @@ namespace speedkt.people.data.Service
     {
         public IList<Person> GetAll();
         public Person GetById(Guid personId);
+        public void UpdateBasicInfo(Person personInfo);
+        public void UpdateAvatar(Person personInfo);
     }
 }
