@@ -3,6 +3,6 @@
     public class AvatarInfo
     {
         public Guid PersonId { get; set; }
-        public string FilePath { get; set; } = string.Empty;
+        public string ImageData { get; set; } = string.Empty;
     }
 }

@@ -46,7 +46,7 @@ namespace speedkt.people.api.Controllers
         [Route("avatar")]
         public void UpdateAvatarAsync(AvatarInfo info)
         {
-            personService.UpdateAvatar(info.PersonId, info.FilePath);
+            personService.UpdateAvatar(info.PersonId, info.ImageData);
         }
     }
 }

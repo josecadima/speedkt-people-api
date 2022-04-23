@@ -9,25 +9,26 @@ namespace speedkt.imagehandler
     {
         private string bucket;
         private RegionEndpoint region;
-        private string validAvatarExt;
+        private string validExt;
         private long maxAvatarSizeKB = 100;
 
         public ImageStore(IConfiguration config)
         {
             bucket = config["AvatarStore:Bucket"];
             region = RegionEndpoint.USEast1;
-            validAvatarExt = config["AvatarStore:ValidExt"];
+            validExt = config["AvatarStore:ValidExt"];
             long.TryParse(config["AvatarStore:MaxSizeKB"], out maxAvatarSizeKB);
         }
 
-        public async Task UploadAvatar(Guid id, string filePath)
+        public void UploadAvatar(Guid id, string imageData)
         {
             try
             {
-                if (!IsFileValid(filePath))
+                Stream imageStream;
+                if (!IsValidImageData(imageData, out imageStream)) 
                     return;
 
-                var key = id.ToString() + new FileInfo(filePath).Extension;
+                var key = $"{id.ToString()}.{validExt}";
 
                 using (var client = new AmazonS3Client(region))
                 {
@@ -35,11 +36,11 @@ namespace speedkt.imagehandler
                     {
                         BucketName = bucket,
                         Key = key,
-                        FilePath = filePath,
+                        InputStream = imageStream,
                         ContentType = "text/plain"
                     };
 
-                    await client.PutObjectAsync(request);
+                    client.PutObjectAsync(request).Wait();
                 }
             }
             catch (Exception e)
@@ -48,17 +49,20 @@ namespace speedkt.imagehandler
             }
         }
 
-        private bool IsFileValid(string filePath)
+        private bool IsValidImageData(string imageData, out Stream imageStream)
         {
-            if (!File.Exists(filePath))
+            imageStream = new MemoryStream();
+            var spl = imageData.Split('/')[1];
+            var imageFormat = spl.Split(';')[0];
+
+            if (imageFormat.ToLower() != validExt)
                 return false;
 
-            var fileInfo = new FileInfo(filePath);
+            var bytes = Convert.FromBase64String(imageData.Split(',')[1]);
+            
+            imageStream = new MemoryStream(bytes);
 
-            if (fileInfo.Extension.ToLower() != validAvatarExt)
-                return false;
-
-            if (fileInfo.Length > maxAvatarSizeKB * 1024)
+            if (imageStream.Length > maxAvatarSizeKB * 1024)
                 return false;
 
             return true;

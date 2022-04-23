@@ -30,9 +30,9 @@ namespace speedkt.people.data.Service
             unitOfWork.Persons.UpdateBasicInfo(personInfo);
         }
 
-        public void UpdateAvatar(Guid personId, string filePath)
+        public void UpdateAvatar(Guid personId, string imageData)
         {
-            imageStore.UploadAvatar(personId, filePath);
+            imageStore.UploadAvatar(personId, imageData);
         }
     }
 }
