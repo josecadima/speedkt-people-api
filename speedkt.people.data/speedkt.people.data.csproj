@@ -11,4 +11,8 @@
     <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="6.0.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\speedkt.imagehandler\speedkt.imagehandler.csproj" />
+  </ItemGroup>
+
 </Project>

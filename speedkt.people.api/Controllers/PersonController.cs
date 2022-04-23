@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using speedkt.people.api.Model;
 using speedkt.people.data.Model;
 using speedkt.people.data.Service;
 
@@ -43,9 +44,9 @@ namespace speedkt.people.api.Controllers
 
         [HttpPut]
         [Route("avatar")]
-        public void UpdateAvatar(Person personInfo)
+        public void UpdateAvatarAsync(AvatarInfo info)
         {
-            personService.UpdateAvatar(personInfo);
+            personService.UpdateAvatar(info.PersonId, info.FilePath);
         }
     }
 }

@@ -5,7 +5,9 @@ VisualStudioVersion = 17.1.32328.378
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "speedkt.people.api", "speedkt.people.api\speedkt.people.api.csproj", "{CBDA6D10-911A-425A-A28D-53BACA36C325}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "speedkt.people.data", "speedkt.people.data\speedkt.people.data.csproj", "{941B800B-1FBE-436A-882D-8255E82CFBB2}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "speedkt.people.data", "speedkt.people.data\speedkt.people.data.csproj", "{941B800B-1FBE-436A-882D-8255E82CFBB2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "speedkt.imagehandler", "speedkt.imagehandler\speedkt.imagehandler.csproj", "{95FF816C-FE05-4407-B753-69C2803AB884}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,6 +23,10 @@ Global
 		{941B800B-1FBE-436A-882D-8255E82CFBB2}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{941B800B-1FBE-436A-882D-8255E82CFBB2}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{941B800B-1FBE-436A-882D-8255E82CFBB2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{95FF816C-FE05-4407-B753-69C2803AB884}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{95FF816C-FE05-4407-B753-69C2803AB884}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{95FF816C-FE05-4407-B753-69C2803AB884}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{95FF816C-FE05-4407-B753-69C2803AB884}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,4 +1,5 @@
-﻿using speedkt.people.data.Model;
+﻿using speedkt.imagehandler;
+using speedkt.people.data.Model;
 using speedkt.people.data.Repository;
 
 namespace speedkt.people.data.Service
@@ -6,10 +7,12 @@ namespace speedkt.people.data.Service
     public class PersonService : IPersonService
     {
         public IUnitOfWork unitOfWork;
+        public IImageStore imageStore;
 
-        public PersonService(IUnitOfWork unitOfWork)
+        public PersonService(IUnitOfWork unitOfWork, IImageStore imageStore)
         {
             this.unitOfWork = unitOfWork;
+            this.imageStore = imageStore;
         }
 
         public IList<Person> GetAll()
@@ -27,9 +30,9 @@ namespace speedkt.people.data.Service
             unitOfWork.Persons.UpdateBasicInfo(personInfo);
         }
 
-        public void UpdateAvatar(Person personInfo)
+        public void UpdateAvatar(Guid personId, string filePath)
         {
-            unitOfWork.Persons.UpdateAvatar(personInfo);
+            imageStore.UploadAvatar(personId, filePath);
         }
     }
 }
