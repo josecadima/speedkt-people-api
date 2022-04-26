@@ -1,3 +1,4 @@
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using speedkt.people.api.Model;
 using speedkt.people.data.Model;
@@ -5,6 +6,7 @@ using speedkt.people.data.Service;
 
 namespace speedkt.people.api.Controllers
 {
+    [Authorize]
     [ApiController]
     [Route("[controller]")]
     public class PersonController : ControllerBase
