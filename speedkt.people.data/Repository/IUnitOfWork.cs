@@ -5,5 +5,6 @@ namespace speedkt.people.data.Repository
     public interface IUnitOfWork
     {
         IUserRepository Persons { get; }
+        IAccountRepository Accounts { get; }
     }
 }

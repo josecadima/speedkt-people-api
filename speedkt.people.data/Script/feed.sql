@@ -9,3 +9,16 @@ CREATE TABLE [dbo].[Person] (
 	[AvatarId]	UNIQUEIDENTIFIER NULL,	
     CONSTRAINT [PK_Person] PRIMARY KEY CLUSTERED ([PersonId] ASC)
 );
+
+CREATE TABLE [dbo].[Account] (
+    [AccountId] UNIQUEIDENTIFIER NOT NULL,
+    [PersonId]	UNIQUEIDENTIFIER NOT NULL,
+    [Auth0Id]   NVARCHAR (255) NOT NULL,
+    CONSTRAINT [PK_Account] PRIMARY KEY CLUSTERED ([AccountId] ASC)
+);
+
+ALTER TABLE [dbo].[Account] 
+ADD CONSTRAINT FK_Account_Person FOREIGN KEY (PersonId) REFERENCES [dbo].[Person](PersonId);
+
+ALTER TABLE [dbo].[Account] 
+ADD CONSTRAINT UC_Auth0Id UNIQUE(Auth0Id);

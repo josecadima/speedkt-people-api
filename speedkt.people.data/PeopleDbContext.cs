@@ -11,5 +11,6 @@ namespace speedkt.people.data
         }
 
         public DbSet<Person> Person { get; set; }
+        public DbSet<Account> Account { get; set; }
     }
 }

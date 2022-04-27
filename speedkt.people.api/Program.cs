@@ -10,6 +10,7 @@ var builder = WebApplication.CreateBuilder(args);
 // Setup Dependency Injection
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IPersonService, PersonService>();
+builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IImageStore, ImageStore>();
 
 // Setup connection string
