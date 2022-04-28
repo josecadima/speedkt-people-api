@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using speedkt.people.api.Model;
 using speedkt.people.data.Model;
 using speedkt.people.data.Service;
 
@@ -19,22 +20,23 @@ namespace speedkt.people.api.Controllers
             this.accountService = accountService;
         }
 
-        [HttpGet]
-        public IActionResult Get(string auth0Id)
+        [HttpPost]
+        [Route("check")]
+        public IActionResult CheckAccount(AccountInfo accountInfo)
         {
             Account account = null;
             try
             {
-                account = accountService.GetByAuth0Id(auth0Id);
+                account = accountService.GetByAuth0Id(accountInfo.Auth0Id);
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 //TODO log
                 return BadRequest("Failed searching account");
             }
 
             if (account == null)
-                return NotFound();
+                return NoContent();
 
             return Ok(account);
         }
